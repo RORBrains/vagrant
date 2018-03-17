@@ -4,6 +4,14 @@
 
 apt-get update -y
 
+# Create a swap file
+
+fallocate -l 2G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
 # RVM
 
 echo "Installing RVM..."
@@ -27,7 +35,6 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 apt-get install -y nodejs
 apt-get install -y build-essential
 
-
 # Yarn
 
 echo "Installing Yarn..."
@@ -35,7 +42,6 @@ echo "Installing Yarn..."
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 apt-get update -y && apt-get install yarn -y
-
 
 # Install postgres
 
@@ -49,8 +55,6 @@ sudo -u postgres bash -c "psql -c \"CREATE ROLE ubuntu LOGIN PASSWORD '';\""
 sudo -u postgres bash -c "psql -c \"ALTER ROLE ubuntu CREATEDB CREATEROLE;\""
 sudo -u ubuntu createdb
 
-
-# Install gems
-
+# Install some gems
 
 gem install rails
