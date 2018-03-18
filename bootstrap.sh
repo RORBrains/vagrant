@@ -57,4 +57,4 @@ sudo -u ubuntu createdb
 
 # Install some gems
 
-gem install rails
+gem install rails html2slim
