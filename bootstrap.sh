@@ -19,7 +19,7 @@ echo "Installing RVM..."
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 \curl -sSL https://get.rvm.io | bash -s stable
 source /etc/profile.d/rvm.sh
-sudo usermod -a -G rvm ubuntu
+sudo usermod -a -G rvm vagrant
 
 # Ruby
 
@@ -49,11 +49,11 @@ echo "Installing Postgres..."
 
 apt-get install postgresql postgresql-contrib libpq-dev -y
 
-echo "Creating user ubuntu for Postgres..."
+echo "Creating user vagrant for Postgres..."
 
-sudo -u postgres bash -c "psql -c \"CREATE ROLE ubuntu LOGIN PASSWORD '';\""
-sudo -u postgres bash -c "psql -c \"ALTER ROLE ubuntu CREATEDB CREATEROLE;\""
-sudo -u ubuntu createdb
+sudo -u postgres bash -c "psql -c \"CREATE ROLE vagrant LOGIN PASSWORD '';\""
+sudo -u postgres bash -c "psql -c \"ALTER ROLE vagrant CREATEDB CREATEROLE;\""
+sudo -u vagrant createdb
 
 # Install some gems
 
