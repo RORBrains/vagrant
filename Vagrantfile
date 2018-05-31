@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.ssh.forward_agent = true
 
   config.vm.provider "virtualbox" do |v|
-    v.name = "rails-tutorial"
+    v.name = "rails-tutorial-1"
     v.memory = 2048
     v.cpus = 2
   end
